@@ -35,6 +35,11 @@ def get_ingredients():
 
             recipe_dict['ingredients'] = ingredients
             recipe_dict['meal'] = recipe.meal_type
+            if recipe.meal_type != "Snack":
+                recipe_dict['number of meals'] = len(recipe.day_of_the_week)
+            else:
+                recipe_dict['number of meals'] = 4
+                
             meals[recipe_title] = recipe_dict
 
         else:
@@ -42,6 +47,8 @@ def get_ingredients():
 
     with open('recipes.json', 'w') as json_file:
         json.dump(meals, json_file)
+
+get_ingredients()
 
     
 
